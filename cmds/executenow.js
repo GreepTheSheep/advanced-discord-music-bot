@@ -169,9 +169,6 @@ async function executenow(message, play, serverQueue, queue) {
 			playlist(message, args, play, queue, serverQueue)
 		} else if (args[0].startsWith('https://www.youtube.com/watch?v=')){
 			launch(message, args[0], play, queue, serverQueue)
-		} else if (args[0].startsWith('https://youtu.be/')){
-			const url = args[0].replace('youtu.be/', 'www.youtube.com/watch?v=')
-                        launch(message, url, play, queue, serverQueue)
 		} else {
 			search(message, args, play, serverQueue, queue)
 		}
