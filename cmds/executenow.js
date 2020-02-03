@@ -106,7 +106,8 @@ async function launch(message, url, play, queue, serverQueue){
 			var connection = await voiceChannel.join();
 			queueContruct.connection = connection;
 			play(message.guild, queueContruct.songs[0], queue);
-			message.react('▶')
+			message.channel.stopTyping(true)
+                        message.react('▶')
 		} catch (err) {
 			console.error(err);
 			queue.delete(message.guild.id);
@@ -114,7 +115,7 @@ async function launch(message, url, play, queue, serverQueue){
 		}
 	} else {
 		serverQueue.songs.splice(1, 0, song);
-		message.channel.send(`${song.title} has been added to the next song!`);
+		message.channel.send(`${song.title} has been added to the next song!`).then(message.channel.stopTyping(true))
 	}
 	console.log(`${songInfo.title} (${songInfo.video_url}) added in ${message.guild.name} in first`)
         } catch (err) {
@@ -163,8 +164,8 @@ async function executenow(message, play, serverQueue, queue) {
 		let args = message.content.split(' ');
 		args.shift();
     
-	    if (args.length < 1) return message.channel.send('Need search or URL')
-
+	        if (args.length < 1) return message.channel.send('Need search or URL')
+                message.channel.startTyping()
 		if (args[0].startsWith('https://www.youtube.com/playlist?list=')) {
 			playlist(message, args, play, queue, serverQueue)
 		} else if (args[0].startsWith('https://www.youtube.com/watch?v=')){
