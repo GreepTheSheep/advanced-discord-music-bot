@@ -15,7 +15,7 @@ function shuffle(a) {
 function shucmd(message, client, serverQueue) {
 	if (!message.member.voiceChannel) return message.channel.send('You have to be in a voice channel to stop the music!');
 	if (!serverQueue) return message.channel.send('There is no song that I could skip!');
-    serverQueue.songs = shuffle(serverQueue.songs)
+    serverQueue.songs = serverQueue.songs[0] + shuffle(serverQueue.songs.splice(1, serverQueue.songs.length - 1))
     message.react('🔀')
 }
 
