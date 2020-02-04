@@ -13,10 +13,10 @@ async function playlist(message, args, play, queue, serverQueue){
 		}
 
 		const voiceChannel = message.member.voiceChannel;
-		if (!voiceChannel) return message.channel.send('You need to be in a voice channel to play music!');
+		if (!voiceChannel) return message.channel.send('You need to be in a voice channel to play music!').then(m=>message.channel.stopTyping(true))
 		const permissions = voiceChannel.permissionsFor(message.client.user);
 		if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
-			return message.channel.send('I need the permissions to join and speak in your voice channel!');
+			return message.channel.send('I need the permissions to join and speak in your voice channel!').then(m=>message.channel.stopTyping(true))
 		}
 
 		message.channel.send(`Adding ${playlist.items.length} songs to the queue, please be patient (it takes some times)`)
@@ -47,6 +47,7 @@ async function playlist(message, args, play, queue, serverQueue){
 					var connection = await voiceChannel.join();
 					queueContruct.connection = connection;
 					await play(message.guild, queueContruct.songs[0], queue);
+					message.channel.stopTyping(true)
 					message.react('▶')
 				} catch (err) {
 					console.error(err);
@@ -66,6 +67,7 @@ async function playlist(message, args, play, queue, serverQueue){
 				console.log(`[Playlist] ${songInfo.title} (${songInfo.video_url}) added in ${message.guild.name} in first`)
 			  }));
 			  serverQueue.songs.splice(1, 0, array)
+			  message.channel.stopTyping(true)
 		}
 	});
         } catch (err) {
@@ -77,10 +79,10 @@ async function playlist(message, args, play, queue, serverQueue){
 async function launch(message, url, play, queue, serverQueue){
         try {
 	const voiceChannel = message.member.voiceChannel;
-	if (!voiceChannel) return message.channel.send('You need to be in a voice channel to play music!');
+	if (!voiceChannel) return message.channel.send('You need to be in a voice channel to play music!').then(m=>message.channel.stopTyping(true))
 	const permissions = voiceChannel.permissionsFor(message.client.user);
 	if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
-		return message.channel.send('I need the permissions to join and speak in your voice channel!');
+		return message.channel.send('I need the permissions to join and speak in your voice channel!').then(m=>message.channel.stopTyping(true))
 	}
 
 	const songInfo = await ytdl.getInfo(url);
