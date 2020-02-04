@@ -29,6 +29,7 @@ async function playlist(message, args, play, queue, serverQueue){
 				songs: [],
 				volume: 100,
 				playing: true,
+				loop: false,
 			};
   
 			queue.set(message.guild.id, queueContruct);
@@ -99,6 +100,7 @@ async function launch(message, url, play, queue, serverQueue){
 			songs: [],
 			volume: 100,
 			playing: true,
+			loop: false,
 		};
 	  
 		serverQueue.songs.push(song)

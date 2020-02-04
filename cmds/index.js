@@ -25,6 +25,9 @@ function cmds_index(message, client, prefix, serverQueue, queue, config){
 	} else if (message.content.toLowerCase().startsWith(`${prefix}volume`) || message.content.toLowerCase().startsWith(`${prefix}vol`)) {
         const volume = require('./volume.js')
 		volume(message);
+	} else if (message.content.toLowerCase() == `${prefix}loop`) {
+        const loop = require('./loop.js')
+		loop(message, client, serverQueue);
 	} else if (message.content.toLowerCase().startsWith(`${prefix}eval`)) {
         if (message.author.id === config.owner){
             const eval_cmd = require('./eval.js')
