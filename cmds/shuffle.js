@@ -18,9 +18,8 @@ function shucmd(message, client, serverQueue) {
     console.log(serverQueue.songs)
     var queueToShuffle = serverQueue.songs.splice(0,1)
     var queueShuffled = shuffle(queueToShuffle)
-    var newQueue = serverQueue.songs.splice(1)
-    serverQueue.songs = newQueue.concat(queueShuffled)
-    console.log(newQueue.concat(queueShuffled))
+    serverQueue.songs = serverQueue.songs.concat(queueShuffled)
+    console.log(serverQueue.songs.concat(queueShuffled))
     message.react('🔀')
 }
 
