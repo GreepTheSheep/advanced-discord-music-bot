@@ -5,6 +5,7 @@ function play(guild, song, queue) {
 	const serverQueue = queue.get(guild.id);
 
 	if (!song) {
+		console.log(`Queue ended in ${guild.name}`)
 		serverQueue.voiceChannel.leave();
 		queue.delete(guild.id);
 		return;
@@ -12,6 +13,7 @@ function play(guild, song, queue) {
 
 	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
 		.on('end', () => {
+			console.log(`${song.name} ended in ${guild.name}`)
 			serverQueue.songs.shift();
 			play(guild, serverQueue.songs[0], queue);
 		})
