@@ -29,7 +29,7 @@ function cmds_index(message, client, prefix, serverQueue, queue, config){
         const loop = require('./loop.js')
 		loop(message, client, serverQueue);
 	} else if (message.content.toLowerCase() == `${prefix}shuffle`) {
-        const shucmd = require('./loop.js')
+        const shucmd = require('./shuffle.js')
 		shucmd(message, client, serverQueue);
 	} else if (message.content.toLowerCase().startsWith(`${prefix}eval`)) {
         if (message.author.id === config.owner){
