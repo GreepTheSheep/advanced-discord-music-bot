@@ -28,6 +28,9 @@ function cmds_index(message, client, prefix, serverQueue, queue, config){
 	} else if (message.content.toLowerCase() == `${prefix}loop`) {
         const loop = require('./loop.js')
 		loop(message, client, serverQueue);
+	} else if (message.content.toLowerCase() == `${prefix}shuffle`) {
+        const shucmd = require('./loop.js')
+		shucmd(message, client, serverQueue);
 	} else if (message.content.toLowerCase().startsWith(`${prefix}eval`)) {
         if (message.author.id === config.owner){
             const eval_cmd = require('./eval.js')
@@ -42,7 +45,9 @@ function cmds_index(message, client, prefix, serverQueue, queue, config){
         } else {
             message.react('❎')
         }
-    } else {
+    } else if (message.content.toLowerCase() == prefix) {
+        message.react('🎶').then(m=>message.react('❓'))
+	} else {
 		message.react('❎')
 	}
 }
