@@ -103,7 +103,6 @@ async function launch(message, url, play, queue, serverQueue){
 			loop: false,
 		};
 	  
-		serverQueue.songs.push(song)
 		queue.set(message.guild.id, queueContruct);
 	  
 		try {
