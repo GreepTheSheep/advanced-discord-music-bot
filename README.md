@@ -3,6 +3,8 @@ A complete script to use Youtube music with discord.js (only Youtube)
 
 (script based on https://www.gabrieltanner.org/blog/dicord-music-bot )
 
+[![DeepScan grade](https://deepscan.io/api/teams/6175/projects/9669/branches/128632/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=6175&pid=9669&bid=128632)
+
 ## Installation
 - Clone this repo
 - invite your bot with OAuth pannel in discordapp.com/developers
