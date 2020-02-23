@@ -1,24 +1,18 @@
 const Discord = require('discord.js')
 const ytdl = require('ytdl-core')
 
-function shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
-}
-
 function shucmd(message, client, serverQueue) {
-	if (!message.member.voiceChannel) return message.channel.send('You have to be in a voice channel to stop the music!');
+    //if (!message.member.voiceChannel) return message.channel.send('You have to be in a voice channel to shuffle the music!');
     if (!serverQueue) return message.channel.send('There is no song that I could skip!');
-    var queueToShuffle = serverQueue.songs.splice(0,1)
-    var queueShuffled = shuffle(queueToShuffle)
-    serverQueue.songs = queueShuffled.concat(serverQueue.songs)
-    message.react('🔀')
+    if (!serverQueue.shuffle) serverQueue.shuffle = false;
+    if (serverQueue.shuffle == true) {
+        serverQueue.shuffle = false;
+	message.react('🔀')
+    }
+    else if (serverQueue.shuffle == false) {
+        serverQueue.shuffle = true;
+        message.react('🔀')
+    }
 }
 
 module.exports = shucmd
