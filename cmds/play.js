@@ -20,12 +20,8 @@ function play(guild, song, queue) {
                             else if (serverQueue.loop == false) {
                                 let random = Math.floor(Math.random() * serverQueue.songs.length)
                                 var newFirst = serverQueue.songs[random]
-                                if (newFirst > -1) {
                                     serverQueue.songs.splice(newFirst, 1);
 				    serverQueue.songs.unshift(newFirst)
-				} else {
-				    console.error(`Error while shuffling queue on ${guild.name} , ignoring...`)
-                                }
                             }
                         }
                         play(guild, serverQueue.songs[0], queue);
