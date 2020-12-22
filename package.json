@@ -29,6 +29,6 @@
     "uws": "^100.0.1",
     "ytdl-core": "^1.0.7",
     "ytpl": "github:NotARandomGUY/node-ytpl#master",
-    "ytsr": "^0.1.10"
+    "ytsr": "^0.1.21"
   }
 }
