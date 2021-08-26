@@ -23,7 +23,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs": "0.0.1-security",
     "opusscript": "0.0.7",
-    "prompt": "^1.1.0",
+    "prompt": "^1.2.0",
     "request": "^2.88.2",
     "shelljs": "^0.8.4",
     "uws": "^100.0.1",
